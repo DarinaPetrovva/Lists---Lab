@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
+
+namespace zad1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> input = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToList();
+            bool isEnded = false;
+            while (!isEnded)
+            {
+                string[] operation = Console.ReadLine().Split(' ').ToArray();
+                switch (operation[0])
+                {
+                    case "Add":
+                        input.Add(int.Parse(operation[1]));
+                        break;
+                    case "Remove":
+                        input.Remove(int.Parse(operation[1]));
+                            break;
+                    case "RemoveAt":
+                        input.RemoveAt(int.Parse(operation[1]));
+                        break;
+                    case "Insert":
+                        input.Insert(int.Parse(operation[2]),int.Parse(operation[1]));
+                        break;
+                    case "end":
+                        isEnded = true;
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+            Console.WriteLine(String.Join(" ",input));
+            
+
+        }
+    }
+}
